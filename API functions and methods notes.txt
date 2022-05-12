@@ -1,0 +1,97 @@
+/**** Main ****/
+get_stock(ticker)
+    """
+    Returns a dictionary containing stock data.
+    :param ticker: stock symbol
+    :type ticker: str
+    :return dict
+    """
+
+get_insider(ticker)
+    """
+    Returns a list of dictionaries containing all recent insider transactions.
+    :param ticker: stock symbol
+    :return: list
+    """
+
+get_news(ticker)
+     """
+    Returns a list of sets containing news headline and url
+    :param ticker: stock symbol
+    :return: list
+    """
+
+get_all_news()
+    """
+    Returns a list of sets containing time, headline and url
+    :return: list
+    """
+
+get_crypto(pair)
+    """
+    :param pair: crypto pair
+    :return: dictionary
+    """
+
+get_analyst_price_targets(ticker, last_ratings=5)
+    """
+    Returns a list of dictionaries containing all analyst ratings and Price targets
+     - if any of 'price_from' or 'price_to' are not available in the DATA, then those values are set to default 0
+    :param ticker: stock symbol
+    :param last_ratings: most recent ratings to pull
+    :return: list
+    """
+
+/**** Portfolio ****/
+__init__(self, email, password, portfolio=None)
+    """
+        Logs in to FinViz and send a GET request to the portfolio.
+        """
+
+__str__(self)
+    """ Returns a readable representation of a table. """
+
+create_portfolio(self, name, file, drop_invalid_ticker=False)
+    """
+        Creates a new portfolio from a .csv file.
+        The .csv file must be in the following format:
+        Ticker,Transaction,Date,Shares,Price
+        
+        (!) For transaction - 1 = BUY, 2 = SELL
+        (!) Note that if the price is omitted the function will take today's ticker price
+        """
+
+__get_portfolio_url(self, portfolio_name)
+    """ Private function used to return the portfolio url from a given id/name. """
+
+/**** Screener ****/
+load_filter_dict(reload=True)
+    """
+        Get dict of available filters. File containing json specification of filters will be built if it doesn't exist
+        or if reload is False
+        """
+
+to_csv(self, filename: str)
+    """Exports the generated table into a CSV file.
+        Returns a CSV string if filename is None.
+        :param filename: CSV file path
+        :type filename: str
+        """
+
+get_charts(self, period="d", size="l", chart_type="c", ta="1")
+     """
+        Downloads the charts of all tickers shown by the table.
+        :param period: table period eg. : 'd', 'w' or 'm' for daily, weekly and monthly periods
+        :type period: str
+        :param size: table size eg.: 'l' for large or 's' for small - choose large for better quality but higher size
+        :type size: str
+        :param chart_type: chart type: 'c' for candles or 'l' for lines
+        :type chart_type: str
+        :param ta: technical analysis eg.: '1' to show ta '0' to hide ta
+        :type ta: str
+        """
+
+get_ticker_details(self)
+    """
+        Downloads the details of all tickers shown by the table.
+        """
